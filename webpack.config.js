@@ -25,6 +25,22 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        // exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              // sourceMap: true
+              // localIdentName: '[local]--[hash:base64:4]'
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {

@@ -1,0 +1,116 @@
+/* grid setup */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+}
+
+/*
+
+
+
+header setup
+
+
+
+*/
+
+.container-header {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "title login"
+    "nav nav";
+}
+
+.item-title {
+  grid-area: title;
+  align-self: end;
+
+}
+
+.item-login {
+  grid-area: login;
+  justify-self: center;
+  align-self: end;
+}
+
+.item-nav {
+  grid-area: nav;
+  justify-self: stretch;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.item-nav td {
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+
+.item-nav .center {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+/*
+
+
+
+runner setup
+
+
+
+*/
+
+.item-runner {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "runner"
+    "goal"
+    "stats";
+  grid-gap: 3px;
+  border: 1px solid black;
+  padding: 10px;
+  width: 75%;
+  margin: 10px auto;
+}
+
+.item-runnerInfo,
+.item-goalTracker,
+.item-runnerStats {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "icon runner charity"
+}
+
+.item-runnerInfo {
+  grid-area: runner;
+}
+
+.item-goalTracker {
+  grid-area: goal;
+}
+
+.item-runnerStats {
+  grid-area: stats;
+}
+
+.item-runningIcon {
+  grid-area: icon;
+}
+
+.item-runnerName {
+  grid-area: runner;
+}
+
+.item-runnerCharity {
+  grid-area: charity;
+}

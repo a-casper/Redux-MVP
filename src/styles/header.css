@@ -1,0 +1,39 @@
+.containerHeader {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "title login"
+    "nav nav";
+}
+
+.itemTitle {
+  grid-area: title;
+  align-self: end;
+  font-size: 32px;
+}
+
+.itemLogin {
+  grid-area: login;
+  justify-self: center;
+  align-self: end;
+  width: 80%;
+}
+
+.itemNav {
+  grid-area: nav;
+  justify-self: stretch;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.itemNav td {
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+
+.itemNav .center {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
