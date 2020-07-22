@@ -15,7 +15,9 @@ const App = ({ currentView, user, team, runs }) => {
 
   return(
     <div className={styles.container}>
-      <Header />
+      <Header
+      user={user}
+      />
       <LoginView />
       <IndividualView
       view={currentView}

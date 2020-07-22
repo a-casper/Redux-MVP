@@ -3,22 +3,29 @@ import { connect } from 'react-redux';
 import styles from '../styles/header.css';
 import { changeDisplay } from '../actions/displayActions';
 
-const Header = ({ changeDisplay }) => {
+const Header = ({ changeDisplay, user }) => {
+
+  const isLoggedIn = user !== null;
+  let logRunButton = <button className={styles.itemLogin}>Log New Run</button>
+  if (!isLoggedIn) {
+    logRunButton = <button className={styles.itemLogin} disabled>Log New Run</button>
+  }
+
   return (
     <header className={styles.containerHeader}>
       <h1 className={styles.itemTitle}>Relay For..?</h1>
-      <button className={styles.itemLogin}>Log New Run</button>
+      {logRunButton}
       <table className={styles.itemNav}>
         <tbody>
           <tr>
             <td>
-              <button value='runner' onClick={changeDisplay}>Individual Results</button>
+              <button value='runner' onClick={(e) => {if(isLoggedIn) {changeDisplay(e)}}}>Individual Results</button>
             </td>
             <td>
-              <button value='team' onClick={changeDisplay}>Team Results</button>
+              <button value='team' onClick={(e) => {if(isLoggedIn) {changeDisplay(e)}}}>Team Results</button>
             </td>
             <td>
-              <button value='runs' onClick={changeDisplay}>Individual Run History</button>
+              <button value='runs' onClick={(e) => {if(isLoggedIn) {changeDisplay(e)}}}>Individual Run History</button>
             </td>
           </tr>
         </tbody>
