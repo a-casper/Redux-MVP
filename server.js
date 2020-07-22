@@ -62,6 +62,16 @@ app.post('/run', async (req, res) => {
   }
 })
 
+app.delete('/run*', async (req, res) => {
+  try {
+    let runs = await db.deleteRun(req.query);
+    res.status(200).send(runs.rows);
+  } catch(err) {
+    console.log('Error deleting Run', err);
+    res.sendStatus(500);
+  }
+});
+
 //team CR routes
 
 

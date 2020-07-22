@@ -17,7 +17,6 @@ const displayReducer = (state = initialState, action) => {
         currView: action.tabName
       }
     case "TOGGLE_LOGGER":
-      console.log('toggle');
       return {
         ...state,
         displayLogger: !state.displayLogger

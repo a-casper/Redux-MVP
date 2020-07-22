@@ -38,13 +38,26 @@ const submitRun = (formData) => {
 
     //dispatch
     dispatch({
-      type: "SUBMIT_RUN",
+      type: "UPDATE_RUNS",
       runs
     })
   }
 }
 
+const deleteRun = (e) => {
+  return async (dispatch, getState) => {
+    const userId = getState().databaseReducer.user.id;
+    let runs = await Axios.delete(`/runs?id=${e.target.value}&runnerId=${userId}`);
+    dispatch({
+      type: "UPDATE_RUNS",
+      runs
+    })
+  };
+
+}
+
 export {
   submitLogin,
-  submitRun
+  submitRun,
+  deleteRun
 };

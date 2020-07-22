@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { changeDisplay } from '../actions/displayActions';
 import styles from '../styles/individualView.css'
 
 const IndividualView = ( { view, user } ) => {
@@ -8,7 +10,7 @@ const IndividualView = ( { view, user } ) => {
   }
 
   //setup chartiy variable based on whether or not the user is on a team or not
-  let charity = <button>Sign up For a Team to run for Charity!</button>
+  let charity = <button value='team' onClick={changeDisplay}>Sign up For a Team to run for Charity!</button>
   if(user.teamId !== null) {
     charity =
       <div>
@@ -49,4 +51,8 @@ const IndividualView = ( { view, user } ) => {
 
 };
 
-export default IndividualView;
+const dispatch = {
+  changeDisplay
+}
+
+export default connect(null, dispatch)(IndividualView);

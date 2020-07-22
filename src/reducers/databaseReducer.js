@@ -18,9 +18,8 @@ const databaseReducer = (state = initialState, action) => {
         runs: action.userData[1],
         team: action.userData[2] || null
       };
-    case "SUBMIT_RUN":
+    case "UPDATE_RUNS":
       //update user and run data
-      console.log('Submmited Run with data:', action.runs.data)
       let newState = {
         ...state,
         runs: action.runs.data,
@@ -28,9 +27,7 @@ const databaseReducer = (state = initialState, action) => {
           ...state.user
         }
       }
-
       runFormatter(newState.user, newState.runs)
-
       return newState;
     default:
       return state;

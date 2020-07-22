@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteRun } from '../actions/databaseActions';
 import styles from '../styles/runView.css';
 
-const RunView = ( { view, user, runs } ) => {
+const RunView = ( { view, user, runs, deleteRun } ) => {
   //if not logged in or not on run page, display nothing
   if(view !== 'runs' || user === null) {
     return null;
@@ -12,6 +14,7 @@ const RunView = ( { view, user, runs } ) => {
       <div key={index} className={styles.itemRun}>
         <div className={styles.itemRunSummary}>
           <p>Date Logged: {new Date(run.runDate).toLocaleString()}</p>
+          <button value={run.id} onClick={deleteRun}>X</button>
         </div>
         <div className={styles.itemRunStats}>
           <div className={styles.itemRunMiles}>
@@ -37,4 +40,8 @@ const RunView = ( { view, user, runs } ) => {
 
 };
 
-export default RunView;
+const dispatch = {
+  deleteRun
+}
+
+export default connect(null, dispatch)(RunView);
