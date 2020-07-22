@@ -34,7 +34,9 @@ const App = ({ currentView, user, team, runs }) => {
       user={user}
       runs={runs}
       />
-      <RunLogView />
+      <RunLogView
+      user={user}
+      />
     </div>
   )
 }

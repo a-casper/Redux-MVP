@@ -35,13 +35,13 @@ const IndividualView = ( { view, user } ) => {
       </div>
       <div className={styles.itemRunnerStats}>
         <div>
-          <span>{`DISTANCE PLACEHODER`}</span>
+          <span>{`Miles: ${user.totalMiles}`}</span>
         </div>
         <div>
-          <span>{`TIME PLACEHOLDER`}</span>
+          <span>{`Time: ${user.formattedTime}`}</span>
         </div>
         <div>
-          <span>{`PACE PLACEHOLDER`}</span>
+          <span>{`Pace: ${user.pace} MPH`}</span>
         </div>
       </div>
     </div>

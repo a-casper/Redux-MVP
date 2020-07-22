@@ -1,4 +1,4 @@
-import { runCalculator, totalCalculator} from './helpers/calculators';
+import { runFormatter } from './helpers/calculators';
 
 const initialState = {
   user: null,
@@ -10,12 +10,16 @@ const databaseReducer = (state = initialState, action) => {
   switch(action.type) {
     case "SUBMIT_LOGIN":
       //need to modify data before returning. need formatted times
+      runFormatter(action.userData[0], action.userData[1]);
+
       return {
         ...state,
         user: action.userData[0],
         runs: action.userData[1],
-        team: action.userData[3] || null
+        team: action.userData[2] || null
       };
+    case "SUBMIT_RUN":
+      //update user and run data
     default:
       return state;
   }

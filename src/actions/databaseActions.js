@@ -17,6 +17,25 @@ const submitLogin = (formData) => {
   }
 }
 
+const submitRun = (formData) => {
+  return async (dispatch, getState) => {
+    const user = getState().databaseReducer.user;
+    console.log(user);
+    let userData
+    let sec = formData.sec || 0;
+    let min = formData.min || 0;
+    let hr = formData.hr || 0;
+    let dataBaseTime = parseInt(sec) + (parseInt(min) * 60) + (parseInt(hr) * 3600);
+    //api call
+    //dispatch
+    dispatch({
+      type: "SUBMIT_RUN",
+      userData
+    })
+  }
+}
+
 export {
-  submitLogin
+  submitLogin,
+  submitRun
 };

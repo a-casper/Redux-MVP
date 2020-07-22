@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from '../styles/header.css';
-import { changeDisplay } from '../actions/displayActions';
+import { changeDisplay, toggleLogger } from '../actions/displayActions';
 
-const Header = ({ changeDisplay, user }) => {
+const Header = ({ changeDisplay, user, toggleLogger }) => {
 
   const isLoggedIn = user !== null;
-  let logRunButton = <button className={styles.itemLogin}>Log New Run</button>
+  let logRunButton = <button className={styles.itemLogin} onClick={toggleLogger}>Log New Run</button>
   if (!isLoggedIn) {
     logRunButton = <button className={styles.itemLogin} disabled>Log New Run</button>
   }
@@ -35,7 +35,8 @@ const Header = ({ changeDisplay, user }) => {
 };
 
 const dispatch = {
-  changeDisplay
+  changeDisplay,
+  toggleLogger
 }
 
 export default connect(null, dispatch)(Header);

@@ -11,7 +11,14 @@ const changeDisplay = (event) => {
   }
 };
 
+const toggleLogger = () => {
+  return {
+    type: "TOGGLE_LOGGER"
+  }
+}
+
 export {
   toggleSignup,
-  changeDisplay
+  changeDisplay,
+  toggleLogger
 };

@@ -18,10 +18,10 @@ const RunView = ( { view, user, runs } ) => {
             <span>{`Distance in Miles: ${run.miles}`}</span>
           </div>
           <div className={styles.itemRunTime}>
-            <span>{`Total Time: ${run.time}`}</span>
+            <span>{`Total Time: ${run.formatted}`}</span>
           </div>
           <div>
-            <span>{`Overall Pace: ${run.pace}? MPH`}</span>
+            <span>{`Overall Pace: ${run.pace} MPH`}</span>
           </div>
         </div>
       </div>
