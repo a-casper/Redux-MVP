@@ -51,7 +51,16 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-//run CRUD routes
+//run CRD routes
+app.post('/run', async (req, res) => {
+  try {
+    let runs = await db.createRun(req.body);
+    res.status(200).send(runs.rows);
+  } catch(err) {
+    console.log('Error creating Run', err);
+    res.sendStatus(500);
+  }
+})
 
 //team CR routes
 

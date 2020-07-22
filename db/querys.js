@@ -69,6 +69,16 @@ pool.getRunner = async (userId) => {
   RUNS TABLE INTERACTIONS
 //////////////////////////////////////////*/
 
+pool.createRun = async ({miles, time, id, date}) => {
+  try {
+    await pool.query(`INSERT INTO runs("runnerId", "miles", "time", "runDate") VALUES ($1, $2, $3, $4)`, [id, miles, time, date]);
+    let runs = await pool.query(`SELECT miles, time, "runDate" from runs WHERE "runnerId"=${id} ORDER BY "runDate" DESC`);
+    return runs;
+  } catch(err) {
+    console.log('Error inserting run into DB', err);
+  }
+}
+
 /*//////////////////////////////////////////
   TEAM TABLE INTERACTIONS
 //////////////////////////////////////////*/
