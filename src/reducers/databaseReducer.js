@@ -13,7 +13,7 @@ const databaseReducer = (state = initialState, action) => {
         ...state,
         user: action.userData[0],
         runs: action.userData[1],
-        team: action.userData[3]
+        team: action.userData[3] || null
       };
     default:
       return state;

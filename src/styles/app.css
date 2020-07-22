@@ -19,7 +19,7 @@ header setup
 
 */
 
-.container-header {
+/* .container-header {
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -56,7 +56,7 @@ header setup
 .item-nav .center {
   border-left: 1px solid black;
   border-right: 1px solid black;
-}
+} */
 
 /*
 
