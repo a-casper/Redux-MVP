@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styles from '../styles/header.css';
+import { changeDisplay } from '../actions/displayActions';
 
-export default function Header(props) {
+const Header = ({ changeDisplay }) => {
   return (
     <header className={styles.containerHeader}>
       <h1 className={styles.itemTitle}>Relay For..?</h1>
@@ -10,13 +12,13 @@ export default function Header(props) {
         <tbody>
           <tr>
             <td>
-              <button value='runner'>Individual Results</button>
+              <button value='runner' onClick={changeDisplay}>Individual Results</button>
             </td>
             <td>
-              <button value='team'>Team Results</button>
+              <button value='team' onClick={changeDisplay}>Team Results</button>
             </td>
             <td>
-              <button value='runs'>Individual Run History</button>
+              <button value='runs' onClick={changeDisplay}>Individual Run History</button>
             </td>
           </tr>
         </tbody>
@@ -24,5 +26,11 @@ export default function Header(props) {
     </header>
   );
 };
+
+const dispatch = {
+  changeDisplay
+}
+
+export default connect(null, dispatch)(Header);
 
 // export default Header;

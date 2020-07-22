@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/loginView.css';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { toggleSignup } from '../actions/loginActions';
+import { toggleSignup } from '../actions/displayActions';
 import { submitLogin } from '../actions/databaseActions';
 // import Login from './LoginForms/Login.jsx';
 
@@ -91,7 +91,7 @@ const dispatch = {
 
 const select = state => ({
   isLoggedIn: state.databaseReducer.user !== null,
-  newUser: state.loginReducer.newUser
+  newUser: state.displayReducer.newUser
 });
 
 LoginView = reduxForm({
