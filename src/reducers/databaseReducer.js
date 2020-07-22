@@ -1,3 +1,5 @@
+import { runCalculator, totalCalculator} from './helpers/calculators';
+
 const initialState = {
   user: null,
   runs: null,
@@ -7,8 +9,7 @@ const initialState = {
 const databaseReducer = (state = initialState, action) => {
   switch(action.type) {
     case "SUBMIT_LOGIN":
-      //use newUser to determine if it is a login or signup
-      console.log(action)
+      //need to modify data before returning. need formatted times
       return {
         ...state,
         user: action.userData[0],
