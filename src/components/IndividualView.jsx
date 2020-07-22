@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { changeDisplay } from '../actions/displayActions';
 import styles from '../styles/individualView.css'
 
-const IndividualView = ( { view, user } ) => {
+const IndividualView = ( { view, user, changeDisplay } ) => {
   //If no user (not logged in) or not on runner page, display nothing
   if(view !== 'runner' || user === null) {
     return null;
   }
 
   //setup chartiy variable based on whether or not the user is on a team or not
-  let charity = <button value='team' onClick={changeDisplay}>Sign up For a Team to run for Charity!</button>
+  let charity = <button value='team' onClick={changeDisplay}>Sign up For a Team to run for Charity!</button>;
   if(user.teamId !== null) {
     charity =
       <div>
@@ -26,7 +26,6 @@ const IndividualView = ( { view, user } ) => {
         <div className={styles.itemRunnerName}>
           <h5>{user.name}</h5>
           <h6>{user.teamName}</h6>
-          <button>Log New Run</button>
         </div>
         <div>
           {charity}
