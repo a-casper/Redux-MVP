@@ -80,6 +80,15 @@ pool.getRunner = async (userId) => {
   }
 };
 
+pool.createRunner = async (userId, runnerInfo) => {
+  try {
+    let id = await pool.query(`INSERT INTO runners(name, pledge, "userId", "birthDate") VALUES ($1, $2, $3, $4) RETURNING id`, [runnerInfo.name, runnerInfo.pledge, userId, runnerInfo.birthDate]);
+    return id;
+  } catch (err) {
+    console.log('Error creating new runner information', err)
+  }
+}
+
 /*//////////////////////////////////////////
   RUNS TABLE INTERACTIONS
 //////////////////////////////////////////*/

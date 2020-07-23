@@ -65,6 +65,14 @@ let LoginView = ({ handleSubmit, isLoggedIn, newUser, toggleSignup }) => {
           />
         </div>
         <div className={styles.formDiv}>
+          <label>Charity Pledge: </label>
+          <Field
+          name='pledge'
+          component='input'
+          type='number'
+          />
+        </div>
+        <div className={styles.formDiv}>
           <label>Birth Date: </label>
           <Field
           name='birthDate'

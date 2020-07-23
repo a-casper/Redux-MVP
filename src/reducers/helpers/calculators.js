@@ -26,7 +26,7 @@ const runFormatter = (user, runs) => {
 
   //add the properties to the user
   user.formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-  user.pace = (totalMiles / (totalTime / 60 / 60)).toFixed(2);
+  user.pace = totalTime === 0 ? 0 : (totalMiles / (totalTime / 60 / 60)).toFixed(2);
   user.totalMiles = totalMiles;
 }
 

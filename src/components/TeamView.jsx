@@ -65,7 +65,7 @@ let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
               <h6>{member.birthDate}</h6>
             </div>
             <div>
-              <p>PLEDGE PLACEHODER</p>
+              <p>Pledge: ${member.pledge}</p>
             </div>
           </div>
           <div className={styles.itemGoalTracker}>

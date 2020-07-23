@@ -30,7 +30,6 @@ app.post('/login', async (req, res) => {
   //if the data matches, fetch the actual runner data and send it back to the client
   if (match) {
     let runnerInfo = await db.getRunner(user.id);
-    console.log('server', runnerInfo.teammates.rows[0])
     res.status(202).send(runnerInfo);
   } else {
     //otherwise, send back incorrect password error
@@ -40,11 +39,12 @@ app.post('/login', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
   //hash the password using bcrypt
-  let hash = bcrypt.hash(req.body.password, saltRounds);
+  let hash = await bcrypt.hash(req.body.password, saltRounds);
   //attempt to create the user (if username exists, expect error)
   try {
     let id = await db.createUser(req.body, hash);
-    let runnerInfo = await db.getRunner(id);
+    let runnerId = await db.createRunner(id.rows[0].id, req.body);
+    let runnerInfo = await db.getRunner(id.rows[0].id);
     res.status(200).send(runnerInfo);
   } catch (err) {
     console.log("Error creating User", err);

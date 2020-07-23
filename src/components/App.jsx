@@ -23,6 +23,7 @@ const App = ({ currentView, user, team, runs }) => {
       view={currentView}
       user={user}
       runs={runs}
+      team={team}
       />
       <TeamView
       view={currentView}
