@@ -13,19 +13,19 @@ const IndividualView = ( { view, user, changeDisplay, team } ) => {
   let charity = <button value='team' onClick={changeDisplay}>Sign up For a Team to run for Charity!</button>;
   if(team !== null) {
     charity =
-      <div>
+      <div className={styles.charity}>
         <h6>{team.charity}</h6>
-        <p>Pledge: ${user.pledge}</p>
+        <h6>Pledge: ${user.pledge}</h6>
       </div>;
   }
 
   return (
     <div className={styles.itemRunner}>
       <div className={styles.itemRunnerInfo}>
-        <img className={styles.itemRunningIcon} src="./missing.jpg" alt="icon goes here"></img>
+        <img className={styles.itemRunningIcon} src="https://hrmvp.blob.core.windows.net/mvp/LogoNoWords.webp" alt="Relay For...? Icon"></img>
         <div className={styles.itemRunnerName}>
           <h5>{user.name}</h5>
-          <h6>{user.teamName}</h6>
+          <h6>AGE: {user.age}</h6>
         </div>
         <div>
           {charity}
@@ -36,13 +36,13 @@ const IndividualView = ( { view, user, changeDisplay, team } ) => {
       </div>
       <div className={styles.itemRunnerStats}>
         <div>
-          <span>{`Miles: ${user.totalMiles}`}</span>
+          <h6>{`Miles: ${user.totalMiles}`}</h6>
         </div>
         <div>
-          <span>{`Time: ${user.formattedTime}`}</span>
+          <h6>{`Time: ${user.formattedTime}`}</h6>
         </div>
         <div>
-          <span>{`Pace: ${user.pace} MPH`}</span>
+          <h6>{`Pace: ${user.pace} MPH`}</h6>
         </div>
       </div>
     </div>

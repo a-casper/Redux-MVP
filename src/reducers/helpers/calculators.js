@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const runFormatter = (user, runs) => {
   //format the time and calulate total miles based of runs
   let totalMiles = 0;
@@ -30,6 +32,11 @@ const runFormatter = (user, runs) => {
   user.formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
   user.pace = totalTime === 0 ? 0 : (totalMiles / (totalTime / 60 / 60)).toFixed(2);
   user.totalMiles = totalMiles;
+
+  //calculate age:
+  let age = (moment().diff(moment(user.birthDate), 'years'));
+  user.age = age;
+
 }
 
 const teamAggregator = (team, members) => {
