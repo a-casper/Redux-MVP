@@ -56,23 +56,29 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
   //last case, render team view Page
   return (
     <div>
-      <h1>{team.name}</h1>
-      <h2>{team.charity}</h2>
-      <h2>{team.goal}</h2>
-      <h3>{team.totalMiles}</h3>
-      <h3>{team.formattedTime}</h3>
-      <h3>{team.pace}</h3>
+      <div className={styles.teamSummary}>
+        <div className={styles.teamHeader}>
+          <h1 className={styles.teamName}>{team.name}</h1>
+          <h1 className={styles.teamCharity}>{team.charity}</h1>
+        </div>
+        <div className={styles.teamStats}>
+          <h3 className={styles.teamMiles}>Total Miles: {team.totalMiles}</h3>
+          <h3 className={styles.teamGoal}>Milage Goal: {team.goal}</h3>
+          <h3 className={styles.teamTime}>Total Time: {team.formattedTime}</h3>
+          <h3 className={styles.teamPace}>Avg Pace: {team.pace} MPH</h3>
+        </div>
+      </div>
       {teammates.map((member) => {
         return (
           <div key={member.id} className={styles.itemRunner}>
           <div className={styles.itemRunnerInfo}>
-            <img className={styles.itemRunningIcon} src="./missing.jpg" alt="icon goes here"></img>
+            <img className={styles.itemRunningIcon} src="https://hrmvp.blob.core.windows.net/mvp/LogoNoWords.webp" alt="icon goes here"></img>
             <div className={styles.itemRunnerName}>
               <h5>{member.name}</h5>
-              <h6>{member.birthDate}</h6>
+              <h6>AGE: {member.age}</h6>
             </div>
             <div>
-              <p>Pledge: ${member.pledge}</p>
+              <h6>Pledge: ${member.pledge}</h6>
             </div>
           </div>
           <div className={styles.itemGoalTracker}>
@@ -80,13 +86,13 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
           </div>
           <div className={styles.itemRunnerStats}>
             <div>
-              <span>{`Miles: ${member.totalMiles}`}</span>
+              <h6>{`Miles: ${member.totalMiles}`}</h6>
             </div>
             <div>
-              <span>{`Time: ${member.formattedTime}`}</span>
+              <h6>{`Time: ${member.formattedTime}`}</h6>
             </div>
             <div>
-              <span>{`Pace: ${member.pace} MPH`}</span>
+              <h6>{`Pace: ${member.pace} MPH`}</h6>
             </div>
           </div>
         </div>

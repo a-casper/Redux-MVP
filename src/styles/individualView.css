@@ -61,7 +61,11 @@
 }
 
 .itemRunner h6 {
-  font-size:20px;
+  font-size:24px;
+}
+
+.itemRunner h5 {
+  font-size: 40px;
 }
 
 .charity {
