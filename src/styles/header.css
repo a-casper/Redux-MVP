@@ -21,11 +21,11 @@
   grid-area: title;
   align-self: center;
   justify-self: left;
-  font-size: 32px;
+  font-size: 48px;
 }
 
 .itemSlogan {
-  font-size: 24px
+  font-size: 32px
 }
 
 .itemSlogan > span {
@@ -55,6 +55,7 @@
   grid-area: nav;
   justify-self: stretch;
   text-align: center;
+  margin-top: 15px;
 }
 
 .itemNav button {

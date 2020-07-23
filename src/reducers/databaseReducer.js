@@ -42,14 +42,18 @@ const databaseReducer = (state = initialState, action) => {
       newState = _.cloneDeep(state);
       newState.runs = action.runs.data
       //need to update here and in team members
-      newState.teammates.forEach(member => {
-        if(newState.user.id === member.id) {
-          member.runs = action.runs.data
-        };
-        runFormatter(member, member.runs)
-      })
+      if(newState.teammates !== null) {
+        newState.teammates.forEach(member => {
+          if(newState.user.id === member.id) {
+            member.runs = action.runs.data
+          };
+          runFormatter(member, member.runs)
+        })
+        teamAggregator(newState.team, newState.teammates);
+      }
+
       runFormatter(newState.user, newState.runs)
-      teamAggregator(newState.team, newState.teammates);
+
       return newState;
       break;
 
@@ -58,11 +62,16 @@ const databaseReducer = (state = initialState, action) => {
       newState.user = action.team.data.runner;
       newState.team = action.team.data.team;
       newState.teammates = action.team.data.teammates
+
+
       runFormatter(newState.user, newState.runs)
-      newState.teammates.forEach(member => {
-        runFormatter(member, member.runs)
-      })
-      teamAggregator(newState.team, newState.teammates);
+
+      if(newState.teammates !== null) {
+        newState.teammates.forEach(member => {
+          runFormatter(member, member.runs)
+        })
+        teamAggregator(newState.team, newState.teammates);
+      }
       return newState;
     default:
       return state;

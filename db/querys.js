@@ -54,7 +54,7 @@ pool.getRunner = async (userId) => {
     runner = runner.rows[0];
     //console.log(runner);
     //using the runnerId, get all associated runs
-    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${runner.id} ORDER BY "runDate" DESC`);
+    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${runner.id} AND "runDate" >= date_trunc('month', CURRENT_DATE) ORDER BY "runDate" DESC`);
     //get the runners team information if the runner is on a team
     let teams = await pool.query(`SELECT id, name FROM teams`);
     teams = teams.rows
@@ -66,7 +66,7 @@ pool.getRunner = async (userId) => {
       teammates = await pool.query(`SELECT * FROM runners WHERE "teamid" = ${runner.teamid}`);
       //get each team members running stats
       for(let i = 0; i < teammates.rows.length; i++) {
-        let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${teammates.rows[i].id} ORDER BY "runDate" DESC`);
+        let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${teammates.rows[i].id} AND "runDate" >= date_trunc('month', CURRENT_DATE) ORDER BY "runDate" DESC`);
         teammates.rows[i].runs = runs.rows;
       }
     }
@@ -98,7 +98,7 @@ pool.createRunner = async (userId, runnerInfo) => {
 pool.createRun = async ({miles, time, id, date}) => {
   try {
     await pool.query(`INSERT INTO runs("runnerId", "miles", "time", "runDate") VALUES ($1, $2, $3, $4)`, [id, miles, time, date]);
-    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${id} ORDER BY "runDate" DESC`);
+    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${id} AND "runDate" >= date_trunc('month', CURRENT_DATE) ORDER BY "runDate" DESC`);
     return runs;
   } catch(err) {
     console.log('Error inserting run into DB', err);
@@ -108,7 +108,7 @@ pool.createRun = async ({miles, time, id, date}) => {
 pool.deleteRun = async ({id, runnerId}) => {
   try {
     await pool.query(`DELETE FROM runs WHERE id=${id}`);
-    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${runnerId} ORDER BY "runDate" DESC`);
+    let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${runnerId} AND "runDate" >= date_trunc('month', CURRENT_DATE) ORDER BY "runDate" DESC`);
     return runs;
   } catch(err) {
     console.log('Error deleting run from DB', err);
@@ -138,7 +138,7 @@ pool.joinTeam = async ({ id, userId }) => {
     let teammates = await pool.query(`SELECT * FROM runners WHERE teamid=${id}`)
     teammates = teammates.rows;
     for(let i = 0; i < teammates.length; i++) {
-      let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${teammates[i].id} ORDER BY "runDate" DESC`);
+      let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${teammates[i].id} AND "runDate" >= date_trunc('month', CURRENT_DATE) ORDER BY "runDate" DESC`);
       teammates[i].runs = runs.rows;
     }
     return {

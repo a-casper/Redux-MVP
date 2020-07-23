@@ -150,3 +150,54 @@
 .teamPace {
   grid-area: pace;
 }
+
+
+/*///////////
+  Team Join/Create Styling
+////////////*/
+
+.teamForm {
+  display: block;
+  margin: 5vh auto;
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.teamForm button {
+  border-color: transparent;
+  background-color: #fae106;
+}
+
+.teamForm h3 {
+  margin: 2vh auto;
+}
+
+.teamForm form {
+  margin: 0 auto;
+  display: grid;
+  width: fit-content;
+}
+
+.teamForm form select {
+  margin: 2vh auto;
+}
+
+.createForm {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.createField {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+}
+
+.createForm label {
+  text-align: right;
+}
+
+.createForm button {
+  width: fit-content;
+  margin: 2vh auto;
+}

@@ -1,4 +1,6 @@
 import React from 'react';
+import ProgressBar from './ProgressBar';
+// import LinearProgressWithLabel from '@material-ui/core/LinearProgress'
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { createTeam } from '../actions/databaseActions';
@@ -12,44 +14,49 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
   } else if(team === null) {
     return (
       <div>
-        <h3 id="join">Join a Team</h3>
-        <form onSubmit={handleSubmit}>
-        <Field name='id' component='select'>
-            <option></option>
-            {teams.map(team => {
-              return <option key={team.id} value={team.id}>{team.name}</option>
-            })}
-        </Field>
-        <button type="submit">Join Now!</button>
-        </form>
-        <h3>Or Create a New Team:</h3>
-        <form onSubmit={handleSubmit}>
-        <div className={styles.formField}>
-          <label>Team Name::</label>
-          <Field
-          name='name'
-          component='input'
-          type='text'
-          />
+        <div className={styles.teamForm}>
+          <h3 id="join">Join a Team</h3>
+          <form onSubmit={handleSubmit}>
+          <Field name='id' component='select'>
+              <option></option>
+              {teams.map(team => {
+                return <option key={team.id} value={team.id}>{team.name}</option>
+              })}
+          </Field>
+          <button type="submit">Join Now!</button>
+          </form>
         </div>
-        <div className={styles.formField}>
-          <label>Selected Charity:</label>
-          <Field
-          name='charity'
-          component='input'
-          type='text'
-          />
+        <div className={styles.teamForm}>
+          <h3>Or Create a New Team:</h3>
+          <form className={styles.createForm} onSubmit={handleSubmit}>
+          <div className={styles.createField}>
+            <label>Team Name:</label>
+            <Field
+            name='name'
+            component='input'
+            type='text'
+            />
+          </div>
+          <div className={styles.createField}>
+            <label>Selected Charity:</label>
+            <Field
+            name='charity'
+            component='input'
+            type='text'
+            />
+          </div>
+          <div className={styles.createField}>
+            <label>Monthly Milage Goal:</label>
+            <Field
+            name='goal'
+            component='input'
+            type='number'
+            />
+          </div>
+          <button type="submit">Create and Join Team</button>
+          </form>
         </div>
-        <div className={styles.formField}>
-          <label>Monthly Milage Goal:</label>
-          <Field
-          name='goal'
-          component='input'
-          type='number'
-          />
-        </div>
-        <button type="submit">Create and Join Team</button>
-        </form>
+
       </div>
     )
   }
@@ -66,6 +73,11 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
           <h3 className={styles.teamGoal}>Milage Goal: {team.goal}</h3>
           <h3 className={styles.teamTime}>Total Time: {team.formattedTime}</h3>
           <h3 className={styles.teamPace}>Avg Pace: {team.pace} MPH</h3>
+        </div>
+        <div>
+          {/* <ProgressBar completed={ (team.totalMiles / team.goal) * 100} /> */}
+          {/* <LinearProgressWithLabel variant="determinate" value={team.totalMiles / team.goal * 100} /> */}
+
         </div>
       </div>
       {teammates.map((member) => {
