@@ -53,11 +53,28 @@ const deleteRun = (e) => {
       runs
     })
   };
+}
 
+const createTeam = (formData) => {
+  return async (dispatch, getState) => {
+    const userId = getState().databaseReducer.user.id;
+    let request = {
+      ...formData,
+      userId
+    };
+    //api request
+    let team = await Axios.post('/teams', request);
+    //dispatch
+    dispatch({
+      type: "CREATE_TEAM",
+      team
+    })
+  }
 }
 
 export {
   submitLogin,
   submitRun,
-  deleteRun
+  deleteRun,
+  createTeam
 };

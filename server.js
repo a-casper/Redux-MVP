@@ -66,13 +66,22 @@ app.delete('/run*', async (req, res) => {
   try {
     let runs = await db.deleteRun(req.query);
     res.status(200).send(runs.rows);
-  } catch(err) {
+  } catch (err) {
     console.log('Error deleting Run', err);
     res.sendStatus(500);
   }
 });
 
 //team CR routes
+app.post('/teams', async (req, res) => {
+  try {
+    let teamData = await db.createTeam(req.body);
+    res.status(200).send(teamData);
+  } catch (err) {
+    console.log('Error creating Team', err);
+    res.sendStatus(500);
+  }
+});
 
 
 //listen

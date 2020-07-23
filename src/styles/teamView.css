@@ -1,0 +1,17 @@
+.form {
+  padding: 30px;
+  top: 10vh;
+  left: 30vw;
+  width: 40vw;
+}
+
+.formField {
+  display: block;
+  width: 100%;
+}
+
+.form > button {
+  display: block;
+  margin: 5px auto;
+
+}

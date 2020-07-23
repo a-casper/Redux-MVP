@@ -3,10 +3,12 @@ import { runFormatter } from './helpers/calculators';
 const initialState = {
   user: null,
   runs: null,
-  team: null
+  team: null,
+  teammates: null
 }
 
 const databaseReducer = (state = initialState, action) => {
+  let newState;
   switch(action.type) {
     case "SUBMIT_LOGIN":
       //need to modify data before returning. need formatted times
@@ -18,9 +20,10 @@ const databaseReducer = (state = initialState, action) => {
         runs: action.userData[1],
         team: action.userData[2] || null
       };
+
     case "UPDATE_RUNS":
       //update user and run data
-      let newState = {
+      newState = {
         ...state,
         runs: action.runs.data,
         user: {
@@ -28,6 +31,13 @@ const databaseReducer = (state = initialState, action) => {
         }
       }
       runFormatter(newState.user, newState.runs)
+      return newState;
+      break;
+    case "CREATE_TEAM":
+      newState = {
+        ...state,
+      };
+      console.log(action.team);
       return newState;
     default:
       return state;
