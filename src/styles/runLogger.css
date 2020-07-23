@@ -1,3 +1,11 @@
+/* color pallette: {
+  "Yellow Pantone":"fae106",
+  "Smoky Black":"0e0d0b",
+  "Blue Munsell":"009fb7",
+  "Snow":"fffbff",
+  "Cultured":"eef0f2"}
+ */
+
 .popupContainer {
   position:fixed;
   width:100%;
@@ -13,32 +21,48 @@
   height:100%;
   top:0;
   left:0;
-  background-color: darkgrey;
+  background-color: darkgray;
   opacity: .6;
   z-index: 5;
 }
 
 .form {
   z-index: 10;
-  background-color: whitesmoke;
+  background-color: #fffbff;
+  color: #0e0d0b;
   padding: 30px;
   display: block;
   position: fixed;
-  top: 10vh;
-  left: 30vw;
-  width: 40vw;
+  top: 25vh;
+  left: 35vw;
+  width: 30vw;
   opacity: 1;
 }
 
 .formField {
-  display: block;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 10px;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.formField label {
+  text-align: right;
 }
 
 .form > button {
   display: block;
   margin: 5px auto;
+}
 
+.form > a {
+  display: block;
+  text-align: center;
+}
+
+.form > a:hover {
+  text-decoration: underline;
 }
 
 .without::-webkit-datetime-edit-ampm-field,

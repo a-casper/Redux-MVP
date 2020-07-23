@@ -32,7 +32,6 @@ let RunLogger = ( { displayLogger, handleSubmit, toggleLogger, user } ) => {
           component='input'
           type='number'
           />
-          <br></br>
           <label>Minutes:</label>
           <Field
           className={styles.without}
@@ -40,7 +39,6 @@ let RunLogger = ( { displayLogger, handleSubmit, toggleLogger, user } ) => {
           component='input'
           type='number'
           />
-          <br></br>
           <label>Seconds:</label>
           <Field
           className={styles.without}

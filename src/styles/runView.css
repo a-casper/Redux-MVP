@@ -1,3 +1,10 @@
+.runTitle {
+  text-align: center;
+  font-size: 40px;
+  color: #fae106;
+  margin-bottom: 30px;
+}
+
 .itemRun {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -5,10 +12,11 @@
     "summary"
     "stats";
   grid-gap: 3px;
-  border: 1px solid black;
   padding: 10px;
   width: 75%;
   margin: 10px auto;
+  background-color: #fae106;
+  color: #0e0d0b;
 }
 
 .itemRunSummary {
@@ -16,6 +24,11 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     "date else"
+}
+
+.deleteBtn {
+  justify-self: right;
+  width: fit-content;
 }
 
 .itemRunStats {

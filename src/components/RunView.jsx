@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteRun } from '../actions/databaseActions';
 import styles from '../styles/runView.css';
@@ -13,8 +14,8 @@ const RunView = ( { view, user, runs, deleteRun } ) => {
     return (
       <div key={index} className={styles.itemRun}>
         <div className={styles.itemRunSummary}>
-          <p>Date Logged: {new Date(run.runDate).toLocaleString()}</p>
-          <button value={run.id} onClick={deleteRun}>X</button>
+          <p>Date Logged: {moment(run.runDate).format("dddd, MMMM Do YYYY, h:mm a")}</p>
+          <button className={styles.deleteBtn} value={run.id} onClick={deleteRun}>X</button>
         </div>
         <div className={styles.itemRunStats}>
           <div className={styles.itemRunMiles}>
@@ -33,7 +34,7 @@ const RunView = ( { view, user, runs, deleteRun } ) => {
 
   return(
     <>
-      <h2>{user.name} Run History</h2>
+      <h2 className={styles.runTitle}>{user.name} Run History</h2>
       {runGrids}
     </>
   )
