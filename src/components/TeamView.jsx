@@ -46,8 +46,46 @@ let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
       </div>
     )
   }
+  //last case, render team view Page
   return (
-    <h1>display team members placeholder</h1>
+    <div>
+      <h1>{team.name}</h1>
+      <h2>{team.charity}</h2>
+      <h2>{team.goal}</h2>
+      <h3>{team.totalMiles}</h3>
+      <h3>{team.formattedTime}</h3>
+      <h3>{team.pace}</h3>
+      {teammates.map((member) => {
+        return (
+          <div key={member.id} className={styles.itemRunner}>
+          <div className={styles.itemRunnerInfo}>
+            <img className={styles.itemRunningIcon} src="./missing.jpg" alt="icon goes here"></img>
+            <div className={styles.itemRunnerName}>
+              <h5>{member.name}</h5>
+              <h6>{member.birthDate}</h6>
+            </div>
+            <div>
+              <p>PLEDGE PLACEHODER</p>
+            </div>
+          </div>
+          <div className={styles.itemGoalTracker}>
+            {member.goal === 0 ? <button>Set a goal to track monthly progress!</button> : <span>{`${miles} out of ${member.goal}`}</span>}
+          </div>
+          <div className={styles.itemRunnerStats}>
+            <div>
+              <span>{`Miles: ${member.totalMiles}`}</span>
+            </div>
+            <div>
+              <span>{`Time: ${member.formattedTime}`}</span>
+            </div>
+            <div>
+              <span>{`Pace: ${member.pace} MPH`}</span>
+            </div>
+          </div>
+        </div>
+        )
+      })}
+    </div>
   )
 
 

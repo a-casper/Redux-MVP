@@ -30,6 +30,7 @@ app.post('/login', async (req, res) => {
   //if the data matches, fetch the actual runner data and send it back to the client
   if (match) {
     let runnerInfo = await db.getRunner(user.id);
+    console.log('server', runnerInfo.teammates.rows[0])
     res.status(202).send(runnerInfo);
   } else {
     //otherwise, send back incorrect password error

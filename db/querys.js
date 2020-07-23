@@ -57,14 +57,23 @@ pool.getRunner = async (userId) => {
     let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${runner.id} ORDER BY "runDate" DESC`);
     //get the runners team information if the runner is on a team
     let team = null;
-    //console.log(runner.teamid)
+    let teammates = null;
+    //Handle Team fetching below
     if(runner.teamid !== null) {
       team = await pool.query(`SELECT name, charity, goal from teams WHERE id=${runner.teamid}`);
+      teammates = await pool.query(`SELECT * FROM runners WHERE "teamid" = ${runner.teamid}`);
+      //get each team members running stats
+      for(let i = 0; i < teammates.rows.length; i++) {
+        let runs = await pool.query(`SELECT id, miles, time, "runDate" from runs WHERE "runnerId"=${teammates.rows[i].id} ORDER BY "runDate" DESC`);
+        teammates.rows[i].runs = runs.rows;
+      }
     }
+
     return {
       runner,
       runs: runs.rows,
-      team: team
+      team: team,
+      teammates: teammates || null
     };
   } catch (err) {
     console.log('Error retrieving runner information from DB', err)

@@ -1,4 +1,4 @@
-import { runFormatter } from './helpers/calculators';
+import { runFormatter, teamAggregator } from './helpers/calculators';
 
 const initialState = {
   user: null,
@@ -11,14 +11,27 @@ const databaseReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case "SUBMIT_LOGIN":
-      //need to modify data before returning. need formatted times
+      //if login failed:
+      if (action.userData.runs === undefined) {
+        return state;
+      }
+      //else format all data
       runFormatter(action.userData.runner, action.userData.runs);
       let team = action.userData.team === null ? null : action.userData.team.rows[0];
+      let teammates = action.userData.teammates === null ? null : action.userData.teammates.rows
+      if (teammates !== null){
+        teammates.forEach(member => {
+          runFormatter(member, member.runs)
+        })
+        teamAggregator(team, teammates);
+      }
+
       return {
         ...state,
         user: action.userData.runner,
         runs: action.userData.runs,
-        team
+        team,
+        teammates
       };
 
     case "UPDATE_RUNS":

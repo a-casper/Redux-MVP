@@ -30,6 +30,32 @@ const runFormatter = (user, runs) => {
   user.totalMiles = totalMiles;
 }
 
+const teamAggregator = (team, members) => {
+  let totalMiles = 0;
+  let totalTime = 0;
+
+  //aggregate team stats
+  members.forEach(member => {
+    member.runs.forEach(run => {
+      totalMiles += run.miles;
+      totalTime += run.time;
+    })
+  })
+
+  //once all runs are added to the toal, create a formatted time string for the total time
+  let hours = Math.floor(totalTime / 60 / 60);
+  let minutes = Math.floor(totalTime / 60) - (hours * 60);
+  let seconds = totalTime % 60;
+
+  //add the properties to the user
+  team.formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+  team.pace = (totalMiles / (totalTime / 60 / 60)).toFixed(2);
+  team.totalMiles = totalMiles;
+
+
+}
+
 export {
-  runFormatter
+  runFormatter,
+  teamAggregator
 };
