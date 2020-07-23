@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { createTeam } from '../actions/databaseActions';
 import styles from '../styles/teamView.css';
 
-let TeamView = ( { view, user, team, handleSubmit } ) => {
+let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
   //if not logged in or not on team page, display nothing
   if(view !== 'team' || user === null) {
     return null;
@@ -58,6 +58,7 @@ const dispatch = {
 }
 
 const select = state => ({
+  teammates: state.databaseReducer.teammates
 });
 
 TeamView = reduxForm({

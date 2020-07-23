@@ -12,13 +12,13 @@ const databaseReducer = (state = initialState, action) => {
   switch(action.type) {
     case "SUBMIT_LOGIN":
       //need to modify data before returning. need formatted times
-      runFormatter(action.userData[0], action.userData[1]);
-
+      runFormatter(action.userData.runner, action.userData.runs);
+      let team = action.userData.team === null ? null : action.userData.team.rows[0];
       return {
         ...state,
-        user: action.userData[0],
-        runs: action.userData[1],
-        team: action.userData[2] || null
+        user: action.userData.runner,
+        runs: action.userData.runs,
+        team
       };
 
     case "UPDATE_RUNS":

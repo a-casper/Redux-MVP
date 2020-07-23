@@ -11,13 +11,13 @@ const IndividualView = ( { view, user, changeDisplay } ) => {
 
   //setup chartiy variable based on whether or not the user is on a team or not
   let charity = <button value='team' onClick={changeDisplay}>Sign up For a Team to run for Charity!</button>;
-  if(user.teamId !== null) {
-    charity =
-      <div>
-        <h6>{team.charity}</h6>
-        <p>{user.pledge}</p>
-      </div>;
-  }
+  // if(user.teamId !== null) {
+  //   charity =
+  //     <div>
+  //       <h6>{team.charity}</h6>
+  //       <p>{user.pledge}</p>
+  //     </div>;
+  // }
 
   return (
     <div className={styles.itemRunner}>
