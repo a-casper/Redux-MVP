@@ -16,7 +16,7 @@ const Header = ({ changeDisplay, user, toggleLogger }) => {
       <img className={styles.logo} src={'https://hrmvp.blob.core.windows.net/mvp/LogoNoWords.webp'}/>
       <div className={styles.itemTitle}>
         <h1>RELAY FOR..?</h1>
-        <h2 className={styles.itemSlogan}>RUNNING FOR WHAT MATTERS TO YOU</h2>
+        <h2 className={styles.itemSlogan}><span>RUNNING</span> FOR WHAT MATTERS TO YOU</h2>
       </div>
       {logRunButton}
       <table className={styles.itemNav}>

@@ -3,7 +3,7 @@
   "Smoky Black":"0e0d0b",
   "Blue Munsell":"009fb7",
   "Snow":"fffbff",
-  "Cultured":"eef0f2"}
+  "Rocket Metallic":"998888"}
  */
 
 .containerHeader {
@@ -26,6 +26,10 @@
 
 .itemSlogan {
   font-size: 24px
+}
+
+.itemSlogan > span {
+  color: #fae106;
 }
 
 .logo {
