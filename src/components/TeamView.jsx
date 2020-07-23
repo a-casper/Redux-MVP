@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { createTeam } from '../actions/databaseActions';
 import styles from '../styles/teamView.css';
 
-let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
+let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
   //if not logged in or not on team page, display nothing
   if(view !== 'team' || user === null) {
     return null;
@@ -12,8 +12,17 @@ let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
   } else if(team === null) {
     return (
       <div>
-        <h3>Create a Team</h3>
-        <h2>Want to join an existing team? <a href="#join">Click Here!</a></h2>
+        <h3 id="join">Join a Team</h3>
+        <form onSubmit={handleSubmit}>
+        <Field name='id' component='select'>
+            <option></option>
+            {teams.map(team => {
+              return <option key={team.id} value={team.id}>{team.name}</option>
+            })}
+        </Field>
+        <button type="submit">Join Now!</button>
+        </form>
+        <h3>Or Create a New Team:</h3>
         <form onSubmit={handleSubmit}>
         <div className={styles.formField}>
           <label>Team Name::</label>
@@ -41,8 +50,6 @@ let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
         </div>
         <button type="submit">Create and Join Team</button>
         </form>
-        <h3 id="join">Join a Team</h3>
-        <p>List of Teams goes here</p>
       </div>
     )
   }
@@ -69,7 +76,7 @@ let TeamView = ( { view, user, team, handleSubmit, teammates } ) => {
             </div>
           </div>
           <div className={styles.itemGoalTracker}>
-            {member.goal === 0 ? <button>Set a goal to track monthly progress!</button> : <span>{`${miles} out of ${member.goal}`}</span>}
+            {/* {member.goal === 0 ? <button>Set a goal to track monthly progress!</button> : <span>{`${miles} out of ${member.goal}`}</span>} */}
           </div>
           <div className={styles.itemRunnerStats}>
             <div>
@@ -96,7 +103,8 @@ const dispatch = {
 }
 
 const select = state => ({
-  teammates: state.databaseReducer.teammates
+  teammates: state.databaseReducer.teammates,
+  teams: state.databaseReducer.teams
 });
 
 TeamView = reduxForm({

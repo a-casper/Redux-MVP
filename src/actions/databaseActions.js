@@ -62,8 +62,15 @@ const createTeam = (formData) => {
       ...formData,
       userId
     };
+
     //api request
-    let team = await Axios.post('/teams', request);
+    let team;
+    if(Object.keys(formData).length > 1) {
+      team = await Axios.post('/teams', request);
+    } else {
+      //joining team
+      team = await Axios.post('/join', request);
+    }
     //dispatch
     dispatch({
       type: "CREATE_TEAM",

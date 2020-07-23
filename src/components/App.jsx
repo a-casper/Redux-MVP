@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Header from './Header.jsx';
@@ -12,6 +12,10 @@ import styles from '../styles/app.css'
 
 
 const App = ({ currentView, user, team, runs }) => {
+
+  useEffect(() => {
+
+  });
 
   return(
     <div className={styles.container}>

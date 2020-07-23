@@ -74,6 +74,27 @@ app.delete('/run*', async (req, res) => {
 });
 
 //team CR routes
+// app.get('/teams', async (req, res) => {
+//   try {
+//     let teamData = await db.getTeams();
+//     teamData = teamData.rows
+//     res.status(200).send(teamData);
+//   } catch (err) {
+//     console.log('Error creating Team', err);
+//     res.sendStatus(500);
+//   }
+// });
+
+app.post('/join', async (req, res) => {
+  try {
+    let teamData = await db.joinTeam(req.body);
+    res.status(200).send(teamData);
+  } catch (err) {
+    console.log('Error joining Team', err);
+    res.sendStatus(500);
+  }
+})
+
 app.post('/teams', async (req, res) => {
   try {
     let teamData = await db.createTeam(req.body);

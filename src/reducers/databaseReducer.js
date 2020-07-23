@@ -1,10 +1,12 @@
 import { runFormatter, teamAggregator } from './helpers/calculators';
+import _ from 'lodash';
 
 const initialState = {
   user: null,
   runs: null,
   team: null,
-  teammates: null
+  teammates: null,
+  teams: null
 }
 
 const databaseReducer = (state = initialState, action) => {
@@ -31,26 +33,36 @@ const databaseReducer = (state = initialState, action) => {
         user: action.userData.runner,
         runs: action.userData.runs,
         team,
-        teammates
+        teammates,
+        teams: action.userData.teams
       };
 
     case "UPDATE_RUNS":
       //update user and run data
-      newState = {
-        ...state,
-        runs: action.runs.data,
-        user: {
-          ...state.user
-        }
-      }
+      newState = _.cloneDeep(state);
+      newState.runs = action.runs.data
+      //need to update here and in team members
+      newState.teammates.forEach(member => {
+        if(newState.user.id === member.id) {
+          member.runs = action.runs.data
+        };
+        runFormatter(member, member.runs)
+      })
       runFormatter(newState.user, newState.runs)
+      teamAggregator(newState.team, newState.teammates);
       return newState;
       break;
+
     case "CREATE_TEAM":
-      newState = {
-        ...state,
-      };
-      console.log(action.team);
+      newState = _.cloneDeep(state);
+      newState.user = action.team.data.runner;
+      newState.team = action.team.data.team;
+      newState.teammates = action.team.data.teammates
+      runFormatter(newState.user, newState.runs)
+      newState.teammates.forEach(member => {
+        runFormatter(member, member.runs)
+      })
+      teamAggregator(newState.team, newState.teammates);
       return newState;
     default:
       return state;

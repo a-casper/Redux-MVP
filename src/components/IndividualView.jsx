@@ -32,7 +32,7 @@ const IndividualView = ( { view, user, changeDisplay, team } ) => {
         </div>
       </div>
       <div className={styles.itemGoalTracker}>
-        {user.goal === 0 ? <button>Set a goal to track monthly progress!</button> : <span>{`${miles} out of ${user.goal}`}</span>}
+        {/* {user.goal === 0 ? <button>Set a goal to track monthly progress!</button> : <span>{`${miles} out of ${user.goal}`}</span>} */}
       </div>
       <div className={styles.itemRunnerStats}>
         <div>

@@ -13,7 +13,11 @@ const Header = ({ changeDisplay, user, toggleLogger }) => {
 
   return (
     <header className={styles.containerHeader}>
-      <h1 className={styles.itemTitle}>Relay For..?</h1>
+      <img className={styles.logo} src={'https://hrmvp.blob.core.windows.net/mvp/LogoNoWords.webp'}/>
+      <div className={styles.itemTitle}>
+        <h1>RELAY FOR..?</h1>
+        <h2 className={styles.itemSlogan}>RUNNING FOR WHAT MATTERS TO YOU</h2>
+      </div>
       {logRunButton}
       <table className={styles.itemNav}>
         <tbody>
