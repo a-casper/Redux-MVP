@@ -24,31 +24,36 @@ app.use(express.static(path.join(__dirname, 'dist'))); //routes
 //login/signup authentication
 
 app.post('/login', async (req, res) => {
-  //query the db to get the user login information
-  let userInfo = await db.getUser(req.body.username); //the selected user will be stored in rows[0]
+  try {
+    //query the db to get the user login information
+    let userInfo = await db.getUser(req.body.username); //the selected user will be stored in rows[0]
 
-  let user = userInfo.rows[0]; //if user is undefined, no user exists, send error
+    let user = userInfo.rows[0]; //if user is undefined, no user exists, send error
 
-  if (user === undefined) {
-    res.status(404).send('Username does not exist');
-  } //if user exists, compare the provided password with the hashed storage
+    if (user === undefined) {
+      res.status(404).send('Username does not exist');
+    } //if user exists, compare the provided password with the hashed storage
 
 
-  let match = await bcrypt.compare(req.body.password, user.password); //if the data matches, fetch the actual runner data and send it back to the client
+    let match = await bcrypt.compare(req.body.password, user.password); //if the data matches, fetch the actual runner data and send it back to the client
 
-  if (match) {
-    let runnerInfo = await db.getRunner(user.id);
-    res.status(202).send(runnerInfo);
-  } else {
-    //otherwise, send back incorrect password error
-    res.status(401).send('Incorrect Password');
+    if (match) {
+      let runnerInfo = await db.getRunner(user.id);
+      res.status(202).send(runnerInfo);
+    } else {
+      //otherwise, send back incorrect password error
+      res.status(401).send('Incorrect Password');
+    }
+  } catch (err) {
+    console.log("Error logging in User", err);
+    res.sendStatus(500);
   }
 });
 app.post('/signup', async (req, res) => {
   //hash the password using bcrypt
-  let hash = await bcrypt.hash(req.body.password, saltRounds); //attempt to create the user (if username exists, expect error)
-
+  //attempt to create the user (if username exists, expect error)
   try {
+    let hash = await bcrypt.hash(req.body.password, saltRounds);
     let id = await db.createUser(req.body, hash);
     let runnerId = await db.createRunner(id.rows[0].id, req.body);
     let runnerInfo = await db.getRunner(id.rows[0].id);
