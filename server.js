@@ -6,13 +6,16 @@ const path = require('path');
 
 const db = require('./db/querys');
 
-const bcrypt = require('bcrypt'); //constants
+const bcrypt = require('bcrypt');
+
+const compression = require('compression'); //constants
 
 
 const saltRounds = 12;
 const PORT = process.env.PORT || 5000;
 const app = express(); //middleware
 
+app.use(compression());
 app.use(express.urlencoded({
   extended: true
 }));
