@@ -1,10 +1,10 @@
 const { Pool } =require('pg');
 
 const pool = new Pool({
-  user: 'anthony.casper',
-  host: 'localhost',
-  database: 'runAcross',
-  password: 'hackreactor',
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'anthony.casper',
+  password: process.env.DB_PASS ||'hackreactor',
+  database: process.env.DB || 'runAcross',
   port: 5432
 });
 
