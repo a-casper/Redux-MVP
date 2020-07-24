@@ -1,19 +1,19 @@
 .container {
-  height: 20;
+  height: 20px;
   width: 100%;
   background-color: #fffbff;
-  margin: 50
 }
 
 .filler {
   height: 100%;
   background-color: #fae106;
   border-radius: 5px;
-  text-align: right
+  text-align: right;
 }
 
 .label {
-  padding: 5;
   color: #0e0f0b;
-  font-weight: bold
+  font-weight: bold;
+  margin-right: 5px;
+  font-family: 'Oswald', sans-serif;
 }

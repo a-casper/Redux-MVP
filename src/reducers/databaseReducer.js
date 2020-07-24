@@ -73,6 +73,14 @@ const databaseReducer = (state = initialState, action) => {
         teamAggregator(newState.team, newState.teammates);
       }
       return newState;
+    case "SUBMIT_GOAL":
+      newState = _.cloneDeep(state)
+      newState.user = {
+        ...state.user,
+        ...action.user.data
+      }
+
+      return newState;
     default:
       return state;
   }

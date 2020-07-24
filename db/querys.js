@@ -91,6 +91,17 @@ pool.createRunner = async (userId, runnerInfo) => {
   }
 }
 
+pool.setGoal = async (goal, runnerId) => {
+  try {
+    let id = await pool.query(`UPDATE runners SET goal = $1 WHERE id=$2`, [goal, runnerId]);
+    let user = await pool.query(`SELECT * FROM runners WHERE id = ${runnerId}`);
+    user = user.rows[0];
+    return user;
+  } catch (err) {
+    console.log('Error setting runner goal', err)
+  }
+}
+
 /*//////////////////////////////////////////
   RUNS TABLE INTERACTIONS
 //////////////////////////////////////////*/

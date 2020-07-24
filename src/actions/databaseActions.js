@@ -79,9 +79,22 @@ const createTeam = (formData) => {
   }
 }
 
+const submitGoal = (formData) => {
+  return async (dispatch, getState) => {
+    const id = getState().databaseReducer.user.id;
+    formData.id = id;
+    let user = await Axios.post('/goal', formData);
+    dispatch({
+      type: "SUBMIT_GOAL",
+      user
+    })
+  };
+};
+
 export {
   submitLogin,
   submitRun,
   deleteRun,
-  createTeam
+  createTeam,
+  submitGoal
 };

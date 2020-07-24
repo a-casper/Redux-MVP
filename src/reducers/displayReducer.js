@@ -1,7 +1,8 @@
 const initialState = {
   newUser: false,
   currView: 'runner',
-  displayLogger: false
+  displayLogger: false,
+  displayGoalLog: false,
 }
 
 const displayReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const displayReducer = (state = initialState, action) => {
       return {
         ...state,
         displayLogger: !state.displayLogger
+      }
+    case "TOGGLE_GOAL":
+      return {
+        ...state,
+        displayGoalLog: !state.displayGoalLog
       }
     default:
       return state;

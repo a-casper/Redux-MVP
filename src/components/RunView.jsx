@@ -25,7 +25,7 @@ const RunView = ( { view, user, runs, deleteRun } ) => {
             <span>{`Total Time: ${run.formatted}`}</span>
           </div>
           <div>
-            <span>{`Overall Pace: ${run.pace} MPH`}</span>
+            <span>{`Overall Pace: ${run.pace} min/mile`}</span>
           </div>
         </div>
       </div>

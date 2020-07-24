@@ -20,6 +20,17 @@ const runFormatter = (user, runs) => {
       //add formatted property to the run with the formatted time and the pace in MPH
       run.formatted = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
       run.pace = (run.miles / (run.time / 60 /60)).toFixed(2);
+
+      //convert user.pace to min/mile instead of MPH
+      minutes = Math.floor(60 / run.pace);
+      seconds = (60 / run.pace) - minutes;
+      seconds *= 60;
+      seconds = seconds.toFixed()
+      if(run.pace === 0) {
+        run.pace = "00:00"
+      } else {
+        run.pace = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); //minutes per mile
+      }
     });
   }
 
@@ -30,9 +41,19 @@ const runFormatter = (user, runs) => {
 
   //add the properties to the user
   user.formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-  user.pace = totalTime === 0 ? 0 : (totalMiles / (totalTime / 60 / 60)).toFixed(2);
   user.totalMiles = totalMiles;
+  user.pace = totalTime === 0 ? 0 : (totalMiles / (totalTime / 60 / 60)).toFixed(2); //MPH
 
+  //convert user.pace to min/mile instead of MPH
+  minutes = Math.floor(60 / user.pace);
+  seconds = (60 / user.pace) - minutes;
+  seconds *= 60;
+  seconds = seconds.toFixed()
+  if(user.pace === 0) {
+    user.pace = "00:00"
+  } else {
+    user.pace = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); //minutes per mile
+  }
   //calculate age:
   let age = (moment().diff(moment(user.birthDate), 'years'));
   user.age = age;
@@ -64,6 +85,15 @@ const teamAggregator = (team, members) => {
   team.pace = totalTime === 0 ? 0 : (totalMiles / (totalTime / 60 / 60)).toFixed(2);
   team.totalMiles = totalMiles;
 
+  minutes = Math.floor(60 / team.pace);
+  seconds = (60 / team.pace) - minutes;
+  seconds *= 60;
+  seconds = seconds.toFixed();
+  if(team.pace === 0) {
+    team.pace = "00:00"
+  } else {
+    team.pace = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); //minutes per mile
+  }
 
 }
 

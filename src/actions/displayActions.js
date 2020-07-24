@@ -17,8 +17,15 @@ const toggleLogger = () => {
   }
 }
 
+const toggleGoalLog = () => {
+  return {
+    type: "TOGGLE_GOAL"
+  }
+}
+
 export {
   toggleSignup,
   changeDisplay,
-  toggleLogger
+  toggleLogger,
+  toggleGoalLog
 };

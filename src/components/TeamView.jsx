@@ -72,10 +72,10 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
           <h3 className={styles.teamMiles}>Total Miles: {team.totalMiles}</h3>
           <h3 className={styles.teamGoal}>Milage Goal: {team.goal}</h3>
           <h3 className={styles.teamTime}>Total Time: {team.formattedTime}</h3>
-          <h3 className={styles.teamPace}>Avg Pace: {team.pace} MPH</h3>
+          <h3 className={styles.teamPace}>Avg Pace: {team.pace} min/mile</h3>
         </div>
         <div>
-          {/* <ProgressBar completed={ (team.totalMiles / team.goal) * 100} /> */}
+          <ProgressBar completed={ Math.min((team.totalMiles / team.goal * 100).toFixed(2), 100)} />
           {/* <LinearProgressWithLabel variant="determinate" value={team.totalMiles / team.goal * 100} /> */}
 
         </div>
@@ -104,7 +104,7 @@ let TeamView = ( { view, user, team, handleSubmit, teammates, teams } ) => {
               <h6>{`Time: ${member.formattedTime}`}</h6>
             </div>
             <div>
-              <h6>{`Pace: ${member.pace} MPH`}</h6>
+              <h6>{`Pace: ${member.pace} min/mile`}</h6>
             </div>
           </div>
         </div>

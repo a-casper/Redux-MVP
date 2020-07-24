@@ -52,6 +52,16 @@ app.post('/signup', async (req, res) => {
   }
 });
 
+app.post('/goal', async (req, res) => {
+  try {
+    let user = await db.setGoal(req.body.miles, req.body.id)
+    res.status(200).send(user);
+  } catch (err) {
+    console.log("Error setting goal", err);
+    res.sendStatus(500);
+  }
+});
+
 //run CRD routes
 app.post('/run', async (req, res) => {
   try {
