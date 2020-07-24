@@ -5,7 +5,8 @@ const pool = new Pool({
   user: process.env.DB_USER || 'anthony.casper',
   password: process.env.DB_PASS ||'hackreactor',
   database: process.env.DB || 'runAcross',
-  port: 5432
+  port: 5432,
+  ssl: true
 });
 
 pool.on('error', (err, client) => {
