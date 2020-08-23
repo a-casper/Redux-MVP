@@ -4,13 +4,6 @@ Relay for is a website that brings runners together to complete virtual relay ra
 
 Below you will find our User Stories, Tech Stack, and Installation Guidance.
 _________________________
-VIDEO DEMO
-
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/2EK1xGYsHwQ" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-
-_________________________
 # User Stories
 
 * As a runner I want to be able to sign up for an account
