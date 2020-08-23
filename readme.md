@@ -7,7 +7,7 @@ _________________________
 VIDEO DEMO
 
 <figure class="video_container">
-  <iframe src="https://youtu.be/2EK1xGYsHwQ" frameborder="0" allowfullscreen="true"> </iframe>
+  <iframe src="https://www.youtube.com/embed/2EK1xGYsHwQ" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
 _________________________
