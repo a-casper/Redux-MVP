@@ -6,6 +6,10 @@ Below you will find our User Stories, Tech Stack, and Installation Guidance.
 _________________________
 VIDEO DEMO
 
+<figure class="video_container">
+  <iframe src="https://youtu.be/2EK1xGYsHwQ" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
 _________________________
 # User Stories
 
@@ -39,8 +43,7 @@ Relay for uses a number of open source projects to work properly:
 * [Express] - fast node.js network app framework
 * [PostgreSQL] - Open source object-relational database system
 ##### Testing And Deployment
-* [Microft Azure] - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.
-* [Google Cloud] - Meet your business challenges head on with cloud computing services from Google.
+* [Micrsoft Azure] - Expand beyond the limits of your current computing platform with the freedom to build, manage, and deploy your applications anywhere with Azure.
 ##### Developer Tools
 * [WebPack] - Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser.
 * [Babel] - The compiler for next generation JavaScript
