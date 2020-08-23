@@ -1,30 +1,65 @@
+/* color pallette: {
+  "Yellow Pantone":"fae106",
+  "Smoky Black":"0e0d0b",
+  "Blue Munsell":"009fb7",
+  "Snow":"fffbff",
+  "Rocket Metallic":"998888"}
+ */
+
 .containerHeader {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  height: 20vh;
+  overflow: hidden;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "title login"
-    "nav nav";
+    "logo title login"
+    "nav nav nav";
 }
 
 .itemTitle {
   grid-area: title;
-  align-self: end;
-  font-size: 32px;
+  align-self: center;
+  justify-self: left;
+  font-size: 48px;
+}
+
+.itemSlogan {
+  font-size: 32px
+}
+
+.itemSlogan > span {
+  color: #fae106;
+}
+
+.logo {
+  grid-area: logo;
+  height: 90%;
+  align-self: center;
+  padding-right: 10px;
+  justify-self: left;
 }
 
 .itemLogin {
   grid-area: login;
   justify-self: center;
-  align-self: end;
+  align-self: center;
   width: 80%;
+  height: 32px;
+  background-color: #fffbff;
+  border: 3px solid #998888;
+  border-radius: 5px;
 }
 
 .itemNav {
   grid-area: nav;
   justify-self: stretch;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.itemNav button {
+  width: 90%;
 }
 
 .itemNav td {
@@ -33,7 +68,8 @@
   text-align: center;
 }
 
+/*
 .itemNav .center {
   border-left: 1px solid black;
   border-right: 1px solid black;
-}
+} */

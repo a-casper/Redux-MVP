@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import Header from './Header.jsx';
 import LoginView from './LoginView';
@@ -10,18 +11,46 @@ import RunLogView from './RunLogView';
 import styles from '../styles/app.css'
 
 
-const App = (props) => {
+const App = ({ currentView, user, team, runs }) => {
+
+  useEffect(() => {
+
+  });
 
   return(
     <div className={styles.container}>
-      <Header />
+      <Header
+      user={user}
+      />
       <LoginView />
-      {/* <IndividualView />
-      <TeamView />
-      <RunView />
-      <RunLogView /> */}
+      <IndividualView
+      view={currentView}
+      user={user}
+      runs={runs}
+      team={team}
+      />
+      <TeamView
+      view={currentView}
+      user={user}
+      team={team}
+      />
+      <RunView
+      view={currentView}
+      user={user}
+      runs={runs}
+      />
+      <RunLogView
+      user={user}
+      />
     </div>
   )
 }
 
-export default App;
+const select = state => ({
+  currentView: state.displayReducer.currView,
+  user: state.databaseReducer.user,
+  team: state.databaseReducer.team,
+  runs: state.databaseReducer.runs
+});
+
+export default connect(select, null)(App);;

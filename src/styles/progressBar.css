@@ -1,0 +1,19 @@
+.container {
+  height: 20px;
+  width: 100%;
+  background-color: #fffbff;
+}
+
+.filler {
+  height: 100%;
+  background-color: #fae106;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.label {
+  color: #0e0f0b;
+  font-weight: bold;
+  margin-right: 5px;
+  font-family: 'Oswald', sans-serif;
+}

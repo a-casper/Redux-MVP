@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import { loginReducer } from './loginReducer';
+import { displayReducer } from './displayReducer';
 import { databaseReducer } from './databaseReducer';
 
 export default combineReducers({
   form,
-  loginReducer,
+  displayReducer,
   databaseReducer
 });

@@ -1,4 +1,13 @@
-.loginForm {
+/* color pallette: {
+  "Yellow Pantone":"fae106",
+  "Smoky Black":"0e0d0b",
+  "Blue Munsell":"009fb7",
+  "Snow":"fffbff",
+  "Rocket Metallic":"998888"}
+ */
+
+.loginForm,
+.signup {
   margin: 0 auto;
   vertical-align: middle;
 }
@@ -8,6 +17,18 @@
   display: block;
   margin: 5px auto;
   padding: 5px;
+  text-align: center;
+}
+
+.signup > .loginForm > div {
+  width: 400px;
+}
+
+.loginForm > button {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  background-color: #fae106;
+  border-color: transparent;
 }
 
 .loginForm > div > input {
@@ -15,10 +36,53 @@
   clear: both;
 }
 
+.loginForm > div > input:focus {
+  outline-color: #998888;
+}
+
 .formDiv > label {
   padding-right: 10px;
 }
 
+.link:hover {
+  text-decoration: underline;
+  color: #998888;
+}
+
 .hidden {
   display: none !important;
+}
+
+.aboutTitle,
+.aboutInfo {
+  text-align: center;
+  margin: 10px;
+}
+
+.aboutTitle {
+  font-size: 24px;
+  color: #fae106;
+}
+
+.aboutInfo {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
+}
+
+/* For very small screens, switch the about paragraph and form width to the full screen */
+@media (max-width: 425px) {
+  .aboutInfo {
+    width: 90%;
+  }
+  .loginForm > div {
+    width: 90%;
+  }
+}
+/* For large screens, have a medium with pargraph */
+@media (max-width: 1200px) {
+  .aboutInfo {
+    width: 60%;
+  }
 }

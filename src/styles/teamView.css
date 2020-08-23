@@ -1,0 +1,203 @@
+.form {
+  padding: 30px;
+  top: 10vh;
+  left: 30vw;
+  width: 40vw;
+}
+
+.formField {
+  display: block;
+  width: 100%;
+}
+
+.form > button {
+  display: block;
+  margin: 5px auto;
+
+}
+
+.itemRunner {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "runner"
+    "goal"
+    "stats";
+  grid-gap: 3px;
+  padding: 10px;
+  width: 75%;
+  height: 250px;
+  margin: 10px auto;
+  background-color: #fae106;
+  color: #0e0d0b;
+  margin: 30px auto;
+}
+
+.itemRunnerInfo,
+.itemGoalTracker,
+.itemRunnerStats {
+  display:grid;
+  width: 90%;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "icon runner charity"
+}
+
+.itemRunnerInfo {
+  grid-template-columns: 1fr 4fr 2fr;
+  grid-template-areas:
+    "icon runner charity"
+}
+
+.itemRunnerInfo {
+  grid-area: runner;
+}
+
+.itemGoalTracker {
+  grid-area: goal;
+}
+
+.itemRunnerStats {
+  grid-area: stats;
+  text-align: center;
+}
+
+.itemRunningIcon {
+  grid-area: icon;
+  height: 90%;
+  overflow: hidden;
+}
+
+.itemRunnerName {
+  grid-area: runner;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.itemRunnerCharity {
+  grid-area: charity;
+}
+
+.itemRunner h6 {
+  font-size:24px;
+}
+
+.itemRunner h5 {
+  font-size: 40px;
+}
+
+.charity {
+  text-align: right;
+}
+
+.teamSummary {
+  background-color: #0e0d0b;
+  color: #fae106;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "summary"
+    "stats";
+  grid-gap: 3px;
+  padding: 10px;
+  width: 75%;
+  height: 150px;
+  margin: 10px auto;
+  margin: 30px auto;
+}
+
+.teamHeader {
+  display: grid;
+  grid-area: summary;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "name charity";
+  font-size: 40px;
+}
+
+.teamName {
+  grid-area: name;
+}
+
+.teamCharity {
+  grid-area: charity;
+  text-align: right;
+
+}
+
+.teamStats {
+  display: grid;
+  justify-items: center;
+  grid-area: stats;
+  font-size: 24px;grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "miles goal time pace";
+}
+
+.teamMiles {
+  grid-area: miles;
+}
+
+.teamGoal {
+  grid-area: goal;
+}
+
+.teamTime {
+  grid-area: time;
+}
+
+.teamPace {
+  grid-area: pace;
+}
+
+
+/*///////////
+  Team Join/Create Styling
+////////////*/
+
+.teamForm {
+  display: block;
+  margin: 5vh auto;
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.teamForm button {
+  border-color: transparent;
+  background-color: #fae106;
+}
+
+.teamForm h3 {
+  margin: 2vh auto;
+}
+
+.teamForm form {
+  margin: 0 auto;
+  display: grid;
+  width: fit-content;
+}
+
+.teamForm form select {
+  margin: 2vh auto;
+}
+
+.createForm {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.createField {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+}
+
+.createForm label {
+  text-align: right;
+}
+
+.createForm button {
+  width: fit-content;
+  margin: 2vh auto;
+}
